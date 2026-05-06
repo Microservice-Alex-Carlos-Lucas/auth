@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 import store.account.AccountOut;
 
@@ -25,6 +26,11 @@ public interface AuthController {
     @PostMapping("/auth/register")
     public ResponseEntity<Void> register(
         @RequestBody RegisterIn in
+    );
+
+    @PostMapping("/auth/solve")
+    public ResponseEntity<SolveOut> solve(
+        @RequestHeader("Authorization") String token
     );
 
     @GetMapping("/auth/whoiam")
